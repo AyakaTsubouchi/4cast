@@ -77,6 +77,7 @@ class App extends React.Component{
                       <div className="container">
                       <Form loadWeather={this.getWeather} />
                       </div>
+                      <div className="leftJcontainer">
                       <Weather
                       weather={this.state.weather}
                           temperature={this.state.temperature}
@@ -86,6 +87,7 @@ class App extends React.Component{
                           description={this.state.description}
                           error={this.state.error}
                         />
+                        </div>
                         
                         <ImageList images={this.state.images} />
                       </div>

@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    padding: 10px;
+}
+.leftHeader {
+   width: 100%;
+   padding: 10px;
+   display: flex;
+}
+.ul{
+    display: flex;
+}
+.title{
+    font-size: 2em;
+}
+.contents li{
+    list-style: none;
+    text-decoration: none;
+    line-height: 4em;
+    vertical-align: bottom;
+}
+a {
+    color: black ;
+}
+
