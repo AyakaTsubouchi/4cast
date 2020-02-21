@@ -1,16 +1,35 @@
 import React from "react";
+import { Column, Row } from 'simple-flexbox';
+import { StyleSheet, css } from 'aphrodite';
+import SidebarComponent from '../components/sidebar/SidebarComponent';
+import HeaderComponent from '../components/header/HeaderComponent';
+// import ContentComponent from './components/content/ContentComponent';
+
 import Form from "../components/weather/Form";
 import Weather from "../components/weather/Weather";
 import unsplash from "../components/imageList/unsplash";
 import ImageList from "../components/imageList/ImageList";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./App.css";
-import Header from "./Header";
+// import Header from "./Header";
 
-
+const styles = StyleSheet.create({
+  container: {
+      height: '100%',
+      minHeight: '100vh'
+  },
+  content: {
+      marginTop: 54
+  },
+  mainBlock: {
+      backgroundColor: '#F7F8FC',
+      padding: 30
+  }
+});
 
 class App extends React.Component{
     state = {
+      selectedItem: 'Weather',
       weather: undefined,
         temperature: undefined,
         city: undefined,
@@ -20,6 +39,15 @@ class App extends React.Component{
         images: [],
         error: undefined
       }
+      componentDidMount() {
+        window.addEventListener('resize', this.resize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resize);
+    }
+
+    resize = () => this.forceUpdate();
        //getWeather is a method we'll use to make the api call
        getWeather = async (e) => {
             
@@ -63,21 +91,22 @@ class App extends React.Component{
    
 
     render(){
+      const { selectedItem } = this.state;
         return (
 
             <div>
-              <div className="wrapper">
+              {/* <div className="wrapper">
                 <div className="main">
-                      <Header />
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-xs-5 title-container">
-                      </div>
-                      <div className="col-xs-7 form-container">
-                      <div className="container">
+                      <Header /> */}
+                      <Row className={css(styles.container)}>
+                <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
+                <Column flexGrow={1} className={css(styles.mainBlock)}>
+                    <HeaderComponent title={selectedItem} />
+                    <div className={css(styles.content)}>
+                        {/* <ContentComponent /> */}
+                        <div className="container">
                       <Form loadWeather={this.getWeather} />
                       </div>
-                      <div className="leftJcontainer">
                       <Weather
                       weather={this.state.weather}
                           temperature={this.state.temperature}
@@ -87,14 +116,12 @@ class App extends React.Component{
                           description={this.state.description}
                           error={this.state.error}
                         />
-                        </div>
                         
                         <ImageList images={this.state.images} />
-                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </Column>
+            </Row>
+
             </div>
           )
     }

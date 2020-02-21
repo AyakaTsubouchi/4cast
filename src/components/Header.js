@@ -9,17 +9,15 @@ class Header extends React.Component{
         return (
             <div className="header" >
             <div className="leftHeader">
-                <div className="title">What To Wear</div>
+                <div className="title">4cast</div>
                 <div className="contents">
                 <ul>
-                    <li><a href="#"> Where To Go</a></li>
+                    <li><a href="#"> whatoWear</a></li>
+                    <li><a href="#"> whatoWear</a></li>
                     </ul>
         
                 </div>
                 </div>
-                {/* <div className="rightHeader">
-                    <Form loadWeather={this.getWeather}/>
-                </div> */}
 
             
             </div>
