@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
                 <select name="city" placeholder="City ...">
                 <option  value="Vancouver">Vancouver</option>
                 <option  value="Sydney">Sydney</option>
-                <option  value="Kyoto">Kyoto</option>
+                <option  value="Kawagoe">Kawagoe</option>
+                <option  value="Kokubu">Kokubu</option>
+                <option  value="Yokohama">Yokohama</option>
                 </select>
         
                 <button>Get Weather</button>
